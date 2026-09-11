@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home | UNI CAMPUS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header"><div class="container navbar"><a class="brand" href="index.html"><span class="logo">U</span><span class="brand-name">UNI CAMPUS</span></a><button class="menu-btn" aria-label="Open menu">☰</button><nav class="nav-links"><a class="active" href="index.html">Home</a><a class="" href="lost-found.html">Lost & Found</a><a class="" href="societies.html">Societies</a><a class="" href="campus-map.html">Campus Map</a><a class="" href="professors.html">Professors</a><a class="" href="calendar.html">Calendar</a><a class="" href="campus-info.html">Campus Info</a></nav><button class="login-btn" data-login>Login</button></div></header>
+
+<main>
+<section class="hero">
+ <div class="container hero-grid">
+  <div>
+   <div class="badge">● YOUR DIGITAL CAMPUS COMPANION</div>
+   <h1>Everything you need on <span>one campus.</span></h1>
+   <p>Find people, places, societies, campus information, events and lost & found resources from one clean and simple student platform.</p>
+   <div class="hero-actions"><a class="primary-btn" href="campus-map.html">Explore Campus</a></div>
+  </div>
+  <div class="map-preview">
+   <div class="road r1"></div><div class="road r2"></div><div class="road r3"></div>
+   <div class="building b1">ADMIN BLOCK</div><div class="building b2">LIBRARY</div>
+   <div class="building b3">STUDENT CENTRE</div><div class="building b4">ACADEMIC BLOCK</div>
+   <div class="map-pin">●</div><div class="map-label">Campus Map · Explore locations</div>
+  </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="container">
+  <div class="section-head"><div class="eyebrow">One platform</div><h2>Your campus, simplified.</h2><p>Designed around the most useful day-to-day campus tasks.</p></div>
+  <div class="cards">
+   <a class="card" href="lost-found.html"><div class="icon-box">⌕</div><h3>Lost & Found</h3><p>Report a lost item or submit details about something you found, including a photo.</p></a>
+   <a class="card" href="societies.html"><div class="icon-box">✦</div><h3>Societies</h3><p>Explore technical, cultural, academic and sports communities around campus.</p></a>
+   <a class="card" href="campus-map.html"><div class="icon-box">⌖</div><h3>Campus Map</h3><p>Quickly locate important academic and student spaces around campus.</p></a>
+   <a class="card" href="professors.html"><div class="icon-box">♙</div><h3>Professors</h3><p>Browse faculty profiles, departments, expertise and cabin information.</p></a>
+   <a class="card" href="calendar.html"><div class="icon-box">□</div><h3>Calendar</h3><p>Keep track of academic dates, campus activities and important events.</p></a>
+   <a class="card" href="campus-info.html"><div class="icon-box">i</div><h3>Campus Info</h3><p>Get quick access to essential campus facilities, timings and support information.</p></a>
+  </div>
+ </div>
+</section>
+
+<section class="section white">
+ <div class="container">
+  <div class="section-head"><div class="eyebrow">How it works</div><h2>Find it. Use it. Move on.</h2><p>UNI CAMPUS keeps common campus information easy to discover.</p></div>
+  <div class="cards">
+   <div class="card"><div class="icon-box">01</div><h3>Search</h3><p>Use the relevant section to search for a person, place, society or event.</p></div>
+   <div class="card"><div class="icon-box">02</div><h3>Explore</h3><p>Open the information you need without navigating through multiple systems.</p></div>
+   <div class="card"><div class="icon-box">03</div><h3>Connect</h3><p>Use the available contact, location and event details to take the next step.</p></div>
+  </div>
+ </div>
+</section>
+</main>
+
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><h3>UNI CAMPUS</h3><p>A simple digital campus companion for students, societies, faculty and everyday campus information.</p></div>
+      <div><h3>Explore</h3><a href="lost-found.html">Lost & Found</a><a href="societies.html">Societies</a><a href="campus-map.html">Campus Map</a><a href="calendar.html">Calendar</a></div>
+      <div><h3>Campus</h3><a href="professors.html">Professors</a><a href="campus-info.html">Campus Info</a><a href="index.html">Home</a></div>
+    </div>
+    <div class="footer-bottom">© 2026 UNI CAMPUS · Frontend college project</div>
+  </div>
+</footer>
+<div class="modal" id="loginModal">
+  <div class="modal-card">
+    <button class="close" aria-label="Close">×</button>
+    <h2>Student Login</h2>
+    <p>Frontend demo login. Connect this form to your backend later.</p>
+    <form data-demo-form>
+      <div class="form-group"><label>College Email</label><input type="email" placeholder="you@college.edu" required></div>
+      <div class="form-group" style="margin-top:14px"><label>Password</label><input type="password" placeholder="Enter password" required></div>
+      <div class="form-actions"><button class="primary-btn">Login</button></div>
+      <div class="notice"></div>
+    </form>
+  </div>
+</div>
+<script src="script.js"></script>
+
+</body>
+</html>

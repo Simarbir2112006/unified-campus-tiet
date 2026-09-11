@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lost & Found | UNI CAMPUS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header"><div class="container navbar"><a class="brand" href="index.html"><span class="logo">U</span><span class="brand-name">UNI CAMPUS</span></a><button class="menu-btn" aria-label="Open menu">☰</button><nav class="nav-links"><a class="" href="index.html">Home</a><a class="active" href="lost-found.html">Lost & Found</a><a class="" href="societies.html">Societies</a><a class="" href="campus-map.html">Campus Map</a><a class="" href="professors.html">Professors</a><a class="" href="calendar.html">Calendar</a><a class="" href="campus-info.html">Campus Info</a></nav><button class="login-btn" data-login>Login</button></div></header>
+
+<main>
+<section class="page-hero"><div class="container"><div class="eyebrow">Student Help Desk</div><h1>Lost & Found</h1><p>Report something you lost or submit a found item so it can be reunited with its owner.</p></div></section>
+<section class="section">
+<div class="container form-wrap">
+ <div class="form-card" style="margin-bottom:22px">
+  <div class="form-title"><div><h2>Report a Lost Item</h2><p>Fill in as much detail as possible.</p></div><span class="tag">LOST</span></div>
+  <form data-demo-form>
+   <div class="form-grid">
+    <div class="form-group"><label>Full Name *</label><input required type="text" placeholder="Enter your name"></div>
+    <div class="form-group"><label>Roll No. *</label><input required type="text" placeholder="e.g. 10240321"></div>
+    <div class="form-group"><label>Contact No. *</label><input required type="tel" placeholder="+91 XXXXX XXXXX"></div>
+    <div class="form-group"><label>Email</label><input type="email" placeholder="college email"></div>
+    <div class="form-group"><label>Lost Item *</label><input required type="text" placeholder="e.g. Black wallet"></div>
+    <div class="form-group"><label>Category *</label><select required><option value="">Select category</option><option>Electronics</option><option>Documents</option><option>Wallet / Money</option><option>Books</option><option>Clothing</option><option>Accessories</option><option>Other</option></select></div>
+    <div class="form-group"><label>Where was it lost? *</label><input required type="text" placeholder="e.g. Library, Block A"></div>
+    <div class="form-group"><label>Date / Approx. Time</label><input type="datetime-local"></div>
+    <div class="form-group full"><label>Item Description *</label><textarea required placeholder="Describe colour, brand, marks, contents or other identifying details..."></textarea></div>
+    <div class="form-group full"><label>Upload Photo</label><div class="file-box"><input data-preview="lostPreview" type="file" accept="image/*"><div class="file-help">Upload a clear photo of the item if available.</div><img id="lostPreview" class="preview" alt="Lost item preview"></div></div>
+   </div>
+   <div class="form-actions"><button type="reset" class="secondary-btn">Clear</button><button class="primary-btn">Submit Lost Report</button></div>
+   <div class="notice"></div>
+  </form>
+ </div>
+
+ <div class="form-card">
+  <div class="form-title"><div><h2>Report a Found Item</h2><p>Help another student find their belongings.</p></div><span class="tag">FOUND</span></div>
+  <form data-demo-form>
+   <div class="form-grid">
+    <div class="form-group"><label>Full Name *</label><input required type="text" placeholder="Enter your name"></div>
+    <div class="form-group"><label>Roll No. *</label><input required type="text" placeholder="e.g. 10240321"></div>
+    <div class="form-group"><label>Contact No. *</label><input required type="tel" placeholder="+91 XXXXX XXXXX"></div>
+    <div class="form-group"><label>Email</label><input type="email" placeholder="college email"></div>
+    <div class="form-group"><label>Found Item *</label><input required type="text" placeholder="e.g. Blue water bottle"></div>
+    <div class="form-group"><label>Category *</label><select required><option value="">Select category</option><option>Electronics</option><option>Documents</option><option>Wallet / Money</option><option>Books</option><option>Clothing</option><option>Accessories</option><option>Other</option></select></div>
+    <div class="form-group"><label>Where was it found? *</label><input required type="text" placeholder="e.g. Canteen, Main Gate"></div>
+    <div class="form-group"><label>Date / Approx. Time</label><input type="datetime-local"></div>
+    <div class="form-group full"><label>Found Item Description *</label><textarea required placeholder="Describe the item and where you found it. Avoid revealing sensitive details that an owner should verify."></textarea></div>
+    <div class="form-group full"><label>Upload Photo *</label><div class="file-box"><input data-preview="foundPreview" type="file" accept="image/*" required><div class="file-help">Upload a clear photo so the owner can identify it.</div><img id="foundPreview" class="preview" alt="Found item preview"></div></div>
+   </div>
+   <div class="form-actions"><button type="reset" class="secondary-btn">Clear</button><button class="primary-btn">Submit Found Report</button></div>
+   <div class="notice"></div>
+  </form>
+ </div>
+</div>
+</section>
+</main>
+
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><h3>UNI CAMPUS</h3><p>A simple digital campus companion for students, societies, faculty and everyday campus information.</p></div>
+      <div><h3>Explore</h3><a href="lost-found.html">Lost & Found</a><a href="societies.html">Societies</a><a href="campus-map.html">Campus Map</a><a href="calendar.html">Calendar</a></div>
+      <div><h3>Campus</h3><a href="professors.html">Professors</a><a href="campus-info.html">Campus Info</a><a href="index.html">Home</a></div>
+    </div>
+    <div class="footer-bottom">© 2026 UNI CAMPUS · Frontend college project</div>
+  </div>
+</footer>
+<div class="modal" id="loginModal">
+  <div class="modal-card">
+    <button class="close" aria-label="Close">×</button>
+    <h2>Student Login</h2>
+    <p>Frontend demo login. Connect this form to your backend later.</p>
+    <form data-demo-form>
+      <div class="form-group"><label>College Email</label><input type="email" placeholder="you@college.edu" required></div>
+      <div class="form-group" style="margin-top:14px"><label>Password</label><input type="password" placeholder="Enter password" required></div>
+      <div class="form-actions"><button class="primary-btn">Login</button></div>
+      <div class="notice"></div>
+    </form>
+  </div>
+</div>
+<script src="script.js"></script>
+
+</body>
+</html>

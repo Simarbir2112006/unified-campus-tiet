@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professors | UNI CAMPUS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header"><div class="container navbar"><a class="brand" href="index.html"><span class="logo">U</span><span class="brand-name">UNI CAMPUS</span></a><button class="menu-btn" aria-label="Open menu">☰</button><nav class="nav-links"><a class="" href="index.html">Home</a><a class="" href="lost-found.html">Lost & Found</a><a class="" href="societies.html">Societies</a><a class="" href="campus-map.html">Campus Map</a><a class="active" href="professors.html">Professors</a><a class="" href="calendar.html">Calendar</a><a class="" href="campus-info.html">Campus Info</a></nav><button class="login-btn" data-login>Login</button></div></header>
+
+<main>
+<section class="page-hero"><div class="container"><div class="eyebrow">Faculty Directory</div><h1>Professors</h1><p>Browse sample faculty profiles by name, department and area of expertise.</p></div></section>
+<section class="section"><div class="container">
+ <div class="toolbar"><div class="search"><input id="professorSearch" placeholder="Search professor, department or specialization..."></div></div>
+ <div class="grid-3">
+  <div class="profile-card" data-professor-card><div class="avatar">AK</div><h3>Dr. A. Kumar</h3><p>Computer Science & Engineering</p><div class="meta"><span class="tag">AI / ML</span><span class="tag">Cabin A-214</span></div><p>Research interests include machine learning, data systems and intelligent applications.</p></div>
+  <div class="profile-card" data-professor-card><div class="avatar">RS</div><h3>Dr. R. Sharma</h3><p>Electronics & Communication</p><div class="meta"><span class="tag">Embedded Systems</span><span class="tag">Cabin B-118</span></div><p>Works on embedded platforms, digital systems and hardware-software integration.</p></div>
+  <div class="profile-card" data-professor-card><div class="avatar">NM</div><h3>Dr. N. Mehta</h3><p>Mechanical Engineering</p><div class="meta"><span class="tag">Thermal Engineering</span><span class="tag">Cabin C-306</span></div><p>Focus areas include thermal systems, energy efficiency and engineering design.</p></div>
+  <div class="profile-card" data-professor-card><div class="avatar">PS</div><h3>Dr. P. Singh</h3><p>Mathematics</p><div class="meta"><span class="tag">Applied Maths</span><span class="tag">Cabin D-201</span></div><p>Teaches applied mathematics and works on mathematical modelling.</p></div>
+  <div class="profile-card" data-professor-card><div class="avatar">RG</div><h3>Dr. R. Gupta</h3><p>Physics</p><div class="meta"><span class="tag">Materials</span><span class="tag">Cabin E-107</span></div><p>Research interests include materials, optics and experimental physics.</p></div>
+  <div class="profile-card" data-professor-card><div class="avatar">SJ</div><h3>Dr. S. Joshi</h3><p>Management Studies</p><div class="meta"><span class="tag">Marketing</span><span class="tag">Cabin F-112</span></div><p>Focuses on marketing strategy, consumer behaviour and entrepreneurship.</p></div>
+ </div>
+ <div id="professorEmpty" class="empty" style="display:none">No professor found.</div>
+</div></section>
+</main>
+
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><h3>UNI CAMPUS</h3><p>A simple digital campus companion for students, societies, faculty and everyday campus information.</p></div>
+      <div><h3>Explore</h3><a href="lost-found.html">Lost & Found</a><a href="societies.html">Societies</a><a href="campus-map.html">Campus Map</a><a href="calendar.html">Calendar</a></div>
+      <div><h3>Campus</h3><a href="professors.html">Professors</a><a href="campus-info.html">Campus Info</a><a href="index.html">Home</a></div>
+    </div>
+    <div class="footer-bottom">© 2026 UNI CAMPUS · Frontend college project</div>
+  </div>
+</footer>
+<div class="modal" id="loginModal">
+  <div class="modal-card">
+    <button class="close" aria-label="Close">×</button>
+    <h2>Student Login</h2>
+    <p>Frontend demo login. Connect this form to your backend later.</p>
+    <form data-demo-form>
+      <div class="form-group"><label>College Email</label><input type="email" placeholder="you@college.edu" required></div>
+      <div class="form-group" style="margin-top:14px"><label>Password</label><input type="password" placeholder="Enter password" required></div>
+      <div class="form-actions"><button class="primary-btn">Login</button></div>
+      <div class="notice"></div>
+    </form>
+  </div>
+</div>
+<script src="script.js"></script>
+
+</body>
+</html>
