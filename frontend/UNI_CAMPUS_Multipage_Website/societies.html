@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Societies | UNI CAMPUS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header"><div class="container navbar"><a class="brand" href="index.html"><span class="logo">U</span><span class="brand-name">UNI CAMPUS</span></a><button class="menu-btn" aria-label="Open menu">☰</button><nav class="nav-links"><a class="" href="index.html">Home</a><a class="" href="lost-found.html">Lost & Found</a><a class="active" href="societies.html">Societies</a><a class="" href="campus-map.html">Campus Map</a><a class="" href="professors.html">Professors</a><a class="" href="calendar.html">Calendar</a><a class="" href="campus-info.html">Campus Info</a></nav><button class="login-btn" data-login>Login</button></div></header>
+
+<main>
+<section class="page-hero"><div class="container"><div class="eyebrow">Campus Communities</div><h1>Societies & Clubs</h1><p>Discover communities by category and find groups that match your interests.</p></div></section>
+<section class="section"><div class="container">
+ <div class="tabs"><button class="tab active" data-society-filter="all">All</button><button class="tab" data-society-filter="technical">Technical</button><button class="tab" data-society-filter="cultural">Cultural</button><button class="tab" data-society-filter="academic">Academic</button><button class="tab" data-society-filter="sports">Sports</button></div>
+ <div class="toolbar"><div class="search"><input id="societySearch" placeholder="Search society, objective or president..."></div></div>
+ <div class="grid-3">
+  <div class="profile-card" data-society-card data-category="technical"><div class="avatar">CS</div><h3>CodeCraft Society</h3><div class="meta"><span class="tag">Technical</span></div><p>Programming, hackathons, open-source projects and peer learning.</p></div>
+  <div class="profile-card" data-society-card data-category="technical"><div class="avatar">AI</div><h3>AI & Robotics Club</h3><div class="meta"><span class="tag">Technical</span></div><p>Artificial intelligence, robotics, computer vision and practical builds.</p></div>
+  <div class="profile-card" data-society-card data-category="cultural"><div class="avatar">MU</div><h3>Music & Performing Arts</h3><div class="meta"><span class="tag">Cultural</span></div><p>Music, stage performances, practice sessions and campus showcases.</p></div>
+  <div class="profile-card" data-society-card data-category="cultural"><div class="avatar">AR</div><h3>Art & Design Circle</h3><div class="meta"><span class="tag">Cultural</span></div><p>Illustration, visual design, photography and creative workshops.</p></div>
+  <div class="profile-card" data-society-card data-category="academic"><div class="avatar">EC</div><h3>Economics Forum</h3><div class="meta"><span class="tag">Academic</span></div><p>Discussions, presentations, case studies and academic competitions.</p></div>
+  <div class="profile-card" data-society-card data-category="sports"><div class="avatar">FT</div><h3>Football Club</h3><div class="meta"><span class="tag">Sports</span></div><p>Training, inter-department matches and campus football activities.</p></div>
+ </div>
+ <div id="societyEmpty" class="empty" style="display:none">No societies found.</div>
+</div></section>
+</main>
+
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><h3>UNI CAMPUS</h3><p>A simple digital campus companion for students, societies, faculty and everyday campus information.</p></div>
+      <div><h3>Explore</h3><a href="lost-found.html">Lost & Found</a><a href="societies.html">Societies</a><a href="campus-map.html">Campus Map</a><a href="calendar.html">Calendar</a></div>
+      <div><h3>Campus</h3><a href="professors.html">Professors</a><a href="campus-info.html">Campus Info</a><a href="index.html">Home</a></div>
+    </div>
+    <div class="footer-bottom">© 2026 UNI CAMPUS · Frontend college project</div>
+  </div>
+</footer>
+<div class="modal" id="loginModal">
+  <div class="modal-card">
+    <button class="close" aria-label="Close">×</button>
+    <h2>Student Login</h2>
+    <p>Frontend demo login. Connect this form to your backend later.</p>
+    <form data-demo-form>
+      <div class="form-group"><label>College Email</label><input type="email" placeholder="you@college.edu" required></div>
+      <div class="form-group" style="margin-top:14px"><label>Password</label><input type="password" placeholder="Enter password" required></div>
+      <div class="form-actions"><button class="primary-btn">Login</button></div>
+      <div class="notice"></div>
+    </form>
+  </div>
+</div>
+<script src="script.js"></script>
+
+</body>
+</html>
