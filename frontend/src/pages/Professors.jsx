@@ -1,89 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { fetchDepartments, fetchProfessors } from "../api/professors";
+
+function initialsFor(name) {
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
 
 function Professors() {
   const [search, setSearch] = useState("");
   const [department, setDepartment] = useState("All");
+  const [departments, setDepartments] = useState(["All"]);
+  const [professors, setProfessors] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const professors = [
-    {
-      name: "Dr. Rajesh Kumar",
-      department: "Computer Science",
-      designation: "Professor",
-      cabin: "C-Block, Cabin 204",
-      email: "rajesh.kumar@thapar.edu",
-      subjects: "Data Structures, Algorithms",
-      initials: "RK",
-    },
-    {
-      name: "Dr. Anjali Sharma",
-      department: "Computer Science",
-      designation: "Associate Professor",
-      cabin: "C-Block, Cabin 208",
-      email: "anjali.sharma@thapar.edu",
-      subjects: "Database Systems, Web Development",
-      initials: "AS",
-    },
-    {
-      name: "Dr. Amit Verma",
-      department: "Electronics",
-      designation: "Professor",
-      cabin: "E-Block, Cabin 112",
-      email: "amit.verma@thapar.edu",
-      subjects: "Digital Electronics, Embedded Systems",
-      initials: "AV",
-    },
-    {
-      name: "Dr. Neha Gupta",
-      department: "Mechanical",
-      designation: "Assistant Professor",
-      cabin: "M-Block, Cabin 305",
-      email: "neha.gupta@thapar.edu",
-      subjects: "Thermodynamics, Fluid Mechanics",
-      initials: "NG",
-    },
-    {
-      name: "Dr. Vikram Singh",
-      department: "Electrical",
-      designation: "Associate Professor",
-      cabin: "E-Block, Cabin 216",
-      email: "vikram.singh@thapar.edu",
-      subjects: "Power Systems, Electrical Machines",
-      initials: "VS",
-    },
-    {
-      name: "Dr. Priya Mehta",
-      department: "Civil",
-      designation: "Assistant Professor",
-      cabin: "B-Block, Cabin 118",
-      email: "priya.mehta@thapar.edu",
-      subjects: "Structural Engineering, Construction",
-      initials: "PM",
-    },
-  ];
+  useEffect(() => {
+    fetchDepartments()
+      .then((data) => setDepartments(["All", ...data]))
+      .catch(() => {
+        // Department list is a secondary enhancement; keep default "All" only.
+      });
+  }, []);
 
-  const departments = [
-    "All",
-    "Computer Science",
-    "Electronics",
-    "Electrical",
-    "Mechanical",
-    "Civil",
-  ];
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(true);
+      setError(null);
 
-  const filteredProfessors = professors.filter((professor) => {
-    const matchesDepartment =
-      department === "All" ||
-      professor.department === department;
+      fetchProfessors({ search, department })
+        .then(setProfessors)
+        .catch(() => setError("Could not load professors. Please try again."))
+        .finally(() => setLoading(false));
+    }, 300);
 
-    const searchText = search.toLowerCase();
-
-    const matchesSearch =
-      professor.name.toLowerCase().includes(searchText) ||
-      professor.department.toLowerCase().includes(searchText) ||
-      professor.subjects.toLowerCase().includes(searchText);
-
-    return matchesDepartment && matchesSearch;
-  });
+    return () => clearTimeout(timeout);
+  }, [search, department]);
 
   return (
     <main>
@@ -137,29 +94,46 @@ function Professors() {
           </div>
 
           {/* RESULTS COUNT */}
-          <div className="professor-results">
-            <span>
-              {filteredProfessors.length} professor
-              {filteredProfessors.length !== 1 ? "s" : ""} found
-            </span>
-          </div>
+          {!loading && !error && (
+            <div className="professor-results">
+              <span>
+                {professors.length} professor
+                {professors.length !== 1 ? "s" : ""} found
+              </span>
+            </div>
+          )}
 
           {/* PROFESSOR CARDS */}
-          {filteredProfessors.length > 0 ? (
+          {loading ? (
+
+            <div className="professor-empty">
+              <h2>Loading professors…</h2>
+            </div>
+
+          ) : error ? (
+
+            <div className="professor-empty">
+              <div className="empty-icon">⌕</div>
+              <h2>Something went wrong</h2>
+              <p>{error}</p>
+            </div>
+
+          ) : professors.length > 0 ? (
 
             <div className="professor-grid">
 
-              {filteredProfessors.map((professor) => (
+              {professors.map((professor) => (
 
-                <article
+                <Link
+                  to={`/professors/${professor.id}`}
                   className="professor-card"
-                  key={professor.email}
+                  key={professor.id}
                 >
 
                   <div className="professor-top">
 
                     <div className="professor-avatar">
-                      {professor.initials}
+                      {initialsFor(professor.name)}
                     </div>
 
                     <div className="professor-title">
@@ -187,47 +161,49 @@ function Professors() {
 
                       <div>
                         <small>Email</small>
-                        <a
-                          href={`mailto:${professor.email}`}
-                        >
-                          {professor.email}
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="professor-detail">
-                      <span className="detail-icon">
-                        +
-                      </span>
-
-                      <div>
-                        <small>Cabin</small>
                         <strong>
-                          {professor.cabin}
+                          {professor.official_email}
                         </strong>
                       </div>
                     </div>
 
-                    <div className="professor-detail">
-                      <span className="detail-icon">
-                        ◈
-                      </span>
+                    {professor.cabin && (
+                      <div className="professor-detail">
+                        <span className="detail-icon">
+                          +
+                        </span>
 
-                      <div>
-                        <small>Subjects</small>
-                        <strong>
-                          {professor.subjects}
-                        </strong>
+                        <div>
+                          <small>Cabin</small>
+                          <strong>
+                            {professor.cabin}
+                          </strong>
+                        </div>
                       </div>
-                    </div>
+                    )}
+
+                    {professor.subjects && (
+                      <div className="professor-detail">
+                        <span className="detail-icon">
+                          ◈
+                        </span>
+
+                        <div>
+                          <small>Subjects</small>
+                          <strong>
+                            {professor.subjects}
+                          </strong>
+                        </div>
+                      </div>
+                    )}
 
                   </div>
 
-                  <button className="professor-direction-btn">
-                    View Cabin Location →
-                  </button>
+                  <div className="professor-direction-btn">
+                    View Profile →
+                  </div>
 
-                </article>
+                </Link>
 
               ))}
 
