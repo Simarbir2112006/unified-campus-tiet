@@ -9,12 +9,44 @@ Academic Calendar, Subgroup Schedules, Societies, and Campus Map.
 
 | Layer    | Technology                                  |
 |----------|---------------------------------------------|
-| Frontend | React + Vite, Tailwind CSS, Axios           |
+| Frontend | React + Vite, Fetch API, plain CSS          |
 | Backend  | Python, FastAPI, SQLModel, Alembic, Uvicorn |
 | Database | PostgreSQL 16                               |
-| Auth     | JWT (python-jose + passlib)                 |
+| Auth     | Not yet implemented                         |
 | DevOps   | Docker, Docker Compose                      |
 | VCS      | Git + GitHub                                |
+
+---
+
+## Implemented Features
+
+### Professor Directory (`/professors`)
+
+- Browse all professors in a searchable, filterable card grid
+- Live search by name, department, or subjects taught
+- Filter by department (list is loaded dynamically from the database)
+- Click into a professor's profile page for full details: designation, department,
+  official email, phone, cabin/office, subjects, and any linked Google Scholar,
+  personal website, LinkedIn, or other profile links
+- Backed by `GET /professors`, `GET /professors/departments`, `GET /professors/{id}`
+
+### Lost & Found (`/lost-found`)
+
+- Submit a "Lost Item" or "Found Item" report with reporter name, roll number,
+  contact number, item name, location, date, description, and an optional photo
+- Uploaded photos are validated by content type and size, stored server-side, and
+  served back to the app
+- Browse a searchable, filterable board of all reports (search across item name,
+  description, and location; filter by Lost/Found)
+- Click into a report's detail page to see the reporter's name and contact number
+  (roll number is never exposed publicly) and call/message them directly
+- The API supports marking a report as `RESOLVED`, but this is not yet wired into
+  the UI — resolving a report should be restricted to the original reporter, which
+  needs reporter accounts (not yet implemented)
+
+**Not yet implemented:** authentication/reporter accounts, admin management,
+production deployment configuration, and the other pages in navigation (Societies,
+Campus Map, Academic Calendar, Campus Info), which are currently UI shells only.
 
 ---
 
@@ -45,7 +77,22 @@ cp backend/.env.example backend/.env
 cp frontend/.env.example frontend/.env
 ```
 
-Do not change anything in these files for local development. The defaults work as is.
+`.env.example` ships with empty values, so fill in the local development values
+below (these are plain Docker Compose defaults, not secrets):
+
+**backend/.env**
+```
+ENVIRONMENT=development
+DATABASE_URL=postgresql://postgres:postgres@db:5432/campus_db
+CORS_ORIGINS=http://localhost:5173
+UPLOAD_DIR=/data/uploads
+MAX_UPLOAD_SIZE_MB=5
+```
+
+**frontend/.env**
+```
+VITE_API_URL=http://localhost:8000
+```
 
 ### 3. Start everything
 
@@ -56,7 +103,17 @@ docker compose up --build
 First time will take a few minutes as Docker pulls images and installs dependencies.
 After that it will be much faster.
 
-### 4. Verify it is working
+### 4. Run database migrations
+
+```bash
+docker compose exec backend alembic upgrade head
+```
+
+This creates the database tables for the features implemented so far (Professor
+Directory, Lost & Found). Run it once after the containers are up, and again any
+time new migrations are added.
+
+### 5. Verify it is working
 
 | Service     | URL                        |
 |-------------|----------------------------|
@@ -64,7 +121,7 @@ After that it will be much faster.
 | Backend API | http://localhost:8000       |
 | API Docs    | http://localhost:8000/docs  |
 
-### 5. Stopping
+### 6. Stopping
 
 ```bash
 docker compose down      # stops containers, keeps database data
@@ -204,18 +261,21 @@ git checkout -b feature/what-you-are-adding
 unified-campus-tiet/
 ├── backend/
 │   ├── app/
-│   │   ├── core/        # config, JWT security
+│   │   ├── core/        # config, file upload handling
 │   │   ├── models/      # database models
 │   │   ├── schemas/     # request and response schemas
 │   │   ├── routers/     # API route handlers
 │   │   └── db/          # database engine and session
+│   ├── migrations/      # Alembic migrations
+│   ├── tests/           # pytest test suite
+│   ├── alembic.ini
 │   ├── requirements.txt
 │   └── .env.example
 ├── frontend/
 │   ├── src/
 │   │   ├── components/  # reusable UI components
 │   │   ├── pages/       # one folder per feature
-│   │   └── api/         # axios calls to backend
+│   │   └── api/         # fetch calls to backend
 │   └── .env.example
 ├── docker-compose.yml
 ├── .gitignore
