@@ -50,6 +50,36 @@ Campus Map, Academic Calendar, Campus Info), which are currently UI shells only.
 
 ---
 
+## Future Direction / Production Deployment
+
+Everything in this section is intended future work — none of it is implemented yet.
+The current environment (Docker Compose running PostgreSQL, the FastAPI backend, and
+the React/Vite frontend together, see [Tech Stack](#tech-stack)) is local development
+only.
+
+- **Image storage:** Lost & Found photo uploads are currently written to the
+  `uploads_data` Docker volume for local development (see `docker-compose.yml`). In
+  production, uploaded images should move from this local Docker volume to persistent
+  cloud/object storage. The specific provider has **not** been decided — this is an
+  open decision, not a name to fill in later.
+- **Application data:** PostgreSQL will continue to be the store for report and
+  application data (Lost & Found reports, professor records, etc.) regardless of where
+  image binaries end up — only the images themselves would move to object storage.
+- **Public deployment:** the app is intended to eventually be made publicly
+  accessible, with the frontend potentially deployed on a platform like Vercel. Backend
+  and database hosting have not been decided.
+- **Auth:** authentication/authorization is required before production, particularly
+  to gate administrative actions such as resolving a Lost & Found report (the API
+  already supports `PATCH /lost-found/reports/{id}/status`, but nothing restricts who
+  can call it yet — see [Lost & Found](#lost--found-lost-found) above).
+- **Also future work, not currently implemented:** production deployment
+  configuration, cloud storage integration, security hardening, production CORS
+  configuration (the current `CORS_ORIGINS` is a localhost dev default), and
+  upload limits/rate limiting beyond the current per-file `MAX_UPLOAD_SIZE_MB`
+  dev default.
+
+---
+
 ## Prerequisites
 
 Install these before anything else:
