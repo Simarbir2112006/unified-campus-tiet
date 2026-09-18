@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Dr. Jane A. Example",
+    "department": "Computer Science",
+    "designation": "Professor",
+    "official_email": "jane.example@example.edu",
+    "phone": "+91-0000000000",
+    "cabin": "X-Block, Cabin 000",
+    "subjects": "Example Subject A, Example Subject B",
+    "google_scholar_url": "https://scholar.google.com/citations?user=EXAMPLE",
+    "personal_website_url": "https://example.edu/~jane",
+    "linkedin_url": "https://www.linkedin.com/in/example",
+    "other_links": [
+      { "label": "ResearchGate", "url": "https://www.researchgate.net/profile/Example" }
+    ]
+  }
+]
